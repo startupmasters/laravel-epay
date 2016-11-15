@@ -1,0 +1,25 @@
+{
+    "name": "deshi/epay",
+    "description": "This is epay package",
+    "license":"MIT",
+    "keywords": [
+        "Epay"
+    ],
+    "authors": [
+        {
+            "name": "deshi9012",
+            "email": "ilia.bojadzhiev@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/support": "~5.1",
+        "symfony/http-foundation": "~2.1|~3.0",
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Deshi\\Epay\\": "src"
+        }
+    }
+}
