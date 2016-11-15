@@ -1,27 +1,33 @@
 
-# laravel-epay
+### Laravel-epay package
 
-I.Instalation
+##Instalation
 
- 1. "require": {
-        "deshi/epay":"dev-master"
-    }
+# Add to your composer.json file
+```json
+"startupmasters/epay":"dev-master"
+```
+#Update composer file
  
+```composer update```
  
- 2.composer update
- 
- 
- 
- 3.Add 
-      Deshi\Epay\Epay\EpayServiceProvider::class,
-  in config/app.php
-  
- 4.Also
-      'Epay'  => Deshi\Epay\Facades\Epay::class
-    
-    in aliases array in the same file
+#In config\app.php
 
+```php
+Deshi\Epay\Epay\EpayServiceProvider::class,
+```
+...
+and
+```php
+   'Epay'  => Deshi\Epay\Facades\Epay::class
+```    
 
- 5.php artisan vendor:publish
- 
- 6.in routes add Epay::test() and see what laravel facade return
+#Publish config files 
+```bash
+php artisan vendor:publish --tag=config
+```
+
+#Test
+```
+in routes add Epay::test() and see what laravel facade return
+```
