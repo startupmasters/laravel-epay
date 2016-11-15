@@ -1,5 +1,5 @@
 {
-    "name": "deshi/epay",
+    "name": "startupmasters/epay",
     "description": "This is epay package",
     "license":"MIT",
     "keywords": [
@@ -7,8 +7,8 @@
     ],
     "authors": [
         {
-            "name": "deshi9012",
-            "email": "ilia.bojadzhiev@gmail.com"
+            "name": "startupmasters",
+            "email": "dev@startupmasters.eu"
         }
     ],
     "minimum-stability": "dev",
