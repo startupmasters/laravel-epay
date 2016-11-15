@@ -15,7 +15,7 @@ class EpayServiceProvider extends ServiceProvider {
         
         $this->publishes([
             $upOne . '/config/deshi-epay.php' => config_path('deshi-epay.php')
-        ]);
+        ],'config');
     }
     /**
      * Register the application services.
