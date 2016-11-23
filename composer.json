@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Deshi\\Epay\\": "src"
+            "StartupMasters\\Epay\\": "src"
         }
     }
 }

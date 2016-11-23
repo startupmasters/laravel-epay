@@ -1,6 +1,6 @@
 <?php
 
-namespace Deshi\Epay\Epay;
+namespace StartupMasters\Epay\Epay;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +14,7 @@ class EpayServiceProvider extends ServiceProvider {
         $upOne = realpath(__DIR__ . '/..');
         
         $this->publishes([
-            $upOne . '/config/deshi-epay.php' => config_path('deshi-epay.php')
+            $upOne . '/config/config-epay.php' => config_path('config-epay.php')
         ],'config');
     }
     /**
@@ -23,6 +23,6 @@ class EpayServiceProvider extends ServiceProvider {
      * @return void
      */
     public function register() {
-        $this->app->bind('epay','Deshi\Epay\Epay\Epay');       
+        $this->app->bind('epay','StartupMasters\Epay\Epay\Epay');       
     }
 }

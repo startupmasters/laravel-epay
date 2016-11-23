@@ -1,6 +1,6 @@
 <?php
 
-namespace Deshi\Epay\Facades;
+namespace StartupMasters\Epay\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

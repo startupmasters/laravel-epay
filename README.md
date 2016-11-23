@@ -14,12 +14,12 @@
 #In config\app.php
 
 ```php
-Deshi\Epay\Epay\EpayServiceProvider::class,
+StartupMasters\Epay\Epay\EpayServiceProvider::class,
 ```
 ...
 and
 ```php
-   'Epay'  => Deshi\Epay\Facades\Epay::class
+   'Epay'  => StartupMasters\Epay\Facades\Epay::class
 ```    
 
 #Publish config files 
