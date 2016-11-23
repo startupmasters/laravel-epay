@@ -2,23 +2,25 @@
 namespace StartupMasters\Epay\Epay;
 
 class Epay {
-	public function test(){ 
-		dd('test');
-	}
-	private static $data = [];
+    public function test(){ 
+        dd('test');
+    }
+    private $data = [];
 
     public function generateInputFields(array $data, string $success_url = null, string $cancel_url=null) {
-        self::setData(array_change_key_case($data, CASE_LOWER));
+
+        $this->setData(array_change_key_case($data, CASE_LOWER));
+
         return '
             <input type="hidden" name="PAGE" value="credit_paydirect">
-            <input type="hidden" name="ENCODED" value="'.self::encode().'">
-            <input type="hidden" name="CHECKSUM" value="'.self::generateChecksum().'">
-            <input type="hidden" name="URL_OK" value="'.($success_url ? $success_url : url(config('epay.success_url'))).'">
-            <input type="hidden" name="URL_CANCEL" value="'.($cancel_url ? $cancel_url : url(config('epay.cancel_url'))).'">
+            <input type="hidden" name="ENCODED" value="'.$this->encode().'">
+            <input type="hidden" name="CHECKSUM" value="'.$this->generateChecksum().'">
+            <input type="hidden" name="URL_OK" value="'.($success_url ? $success_url : url(config('config-epay.success_url'))).'">
+            <input type="hidden" name="URL_CANCEL" value="'.($cancel_url ? $cancel_url : url(config('config-epay.cancel_url'))).'">
         ';
     }
 
-    public static function receiveNotification($requestInputs)
+    public function receiveNotification($requestInputs)
     {
         $encoded  = $requestInputs['encoded'];
         $checksum = $requestInputs['checksum'];
@@ -61,16 +63,16 @@ class Epay {
     }
 
     public static function getSubmitUrl(){
-        return config('epay.submit_url');
+        return config('config-epay.submit_url');
     }
 
-    private static function setData(array $data){
-        $min = config('epay.client_id');
+    private function setData(array $data){
+        $min = config('config-epay.client_id');
         $invoice = ($data['invoice'] ? $data['invoice'] : sprintf("%.0f", rand() * 100000));
         $amount = $data['amount'];
-        $exp_date = date('d.m.Y', strtotime(date('d.m.Y') . ' +'.config('epay.expire_days').' day'));
+        $exp_date = date('d.m.Y', strtotime(date('d.m.Y') . ' +'.config('config-epay.expire_days').' day'));
         $descr = $data['descr'];
-        self::$data = '<<<DATA
+        $this->data = '<<<DATA
          MIN='.$min.'
          INVOICE='.$invoice.'
          AMOUNT='.$amount.'
@@ -80,12 +82,12 @@ class Epay {
          DATA';
     }
 
-    private static function generateChecksum(){
-        return hash_hmac('sha1', self::encode(), config('epay.secret'));
+    private function generateChecksum(){
+        return hash_hmac('sha1', $this->encode(), config('config-epay.secret'));
     }
 
-    private static function encode(){
-        return base64_encode(self::$data);
+    private function encode(){
+        return base64_encode($this->data);
     }
 
 }
