@@ -1,5 +1,8 @@
 {
     "name": "startupmasters/laravel-epay",
+   "replace":{
+  	"startupmasters/epay":"self.version" 
+   }, 
     "description": "This is epay package",
     "license":"MIT",
     "keywords": [
