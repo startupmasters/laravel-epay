@@ -3,9 +3,9 @@
     "description": "This is epay package",
     "license":"MIT",
     "keywords": [
-        "Epay",
-	"laravel",
-	"payments"
+       "Epay",
+	   "laravel",
+	   "payments"
     ],
     "authors": [
         {
