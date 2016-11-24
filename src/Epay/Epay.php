@@ -2,7 +2,7 @@
 namespace StartupMasters\Epay\Epay;
 
 class Epay {
-    
+   
     private $data = [];
     private $page_type;
 
