@@ -2,17 +2,25 @@
 namespace StartupMasters\Epay\Epay;
 
 class Epay {
-    public function test(){ 
-        dd('test');
-    }
+    
     private $data = [];
+    private $page_type;
 
-    public function generateInputFields(array $data, string $success_url = null, string $cancel_url=null) {
+    public function generateInputFields(array $data, string $page_type, string $success_url = null, string $cancel_url=null) {
 
         $this->setData(array_change_key_case($data, CASE_LOWER));
 
+        switch ($page_type) {
+            case 'credit_paydirect':
+                $this->page_type = 'credit_paydirect'
+                break;
+            
+            default:
+                $this->page_type = 'paylogin'
+                break;
+        }
         return '
-            <input type="hidden" name="PAGE" value="credit_paydirect">
+            <input type="hidden" name="PAGE" value="'.$this->page_type.'">
             <input type="hidden" name="ENCODED" value="'.$this->encode().'">
             <input type="hidden" name="CHECKSUM" value="'.$this->generateChecksum().'">
             <input type="hidden" name="URL_OK" value="'.($success_url ? $success_url : url(config('config-epay.success_url'))).'">
@@ -24,7 +32,7 @@ class Epay {
     {
         $encoded  = $requestInputs['encoded'];
         $checksum = $requestInputs['checksum'];
-        $hmac = hash_hmac('sha1', $encoded, config('epay.secret'));
+        $hmac = hash_hmac('sha1', $encoded, config('config-epay.secret'));
 
         if ($hmac == $checksum) {
             $result = [];
