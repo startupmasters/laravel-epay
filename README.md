@@ -17,6 +17,7 @@
 StartupMasters\Epay\Epay\EpayServiceProvider::class,
 ```
 ...
+
  -in 'aliases' array 
 ```php
    'Epay'  => StartupMasters\Epay\Facades\Epay::class
