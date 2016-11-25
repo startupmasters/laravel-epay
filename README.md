@@ -12,12 +12,12 @@
 ```composer update```
  
 #In config\app.php
-
+ -in 'providers' array
 ```php
 StartupMasters\Epay\Epay\EpayServiceProvider::class,
 ```
 ...
-and
+ -in 'aliases' array 
 ```php
    'Epay'  => StartupMasters\Epay\Facades\Epay::class
 ```    
