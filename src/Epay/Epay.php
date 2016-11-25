@@ -6,17 +6,17 @@ class Epay {
     private $data = [];
     private $page_type;
 
-    public function generateInputFields(array $data, string $page_type, string $success_url = null, string $cancel_url=null) {
+    public function generateInputFields(array $data, $page_type, $success_url = null, $cancel_url=null) {
 
         $this->setData(array_change_key_case($data, CASE_LOWER));
 
         switch ($page_type) {
             case 'credit_paydirect':
-                $this->page_type = 'credit_paydirect'
+                $this->page_type = 'credit_paydirect';
                 break;
-            
+
             default:
-                $this->page_type = 'paylogin'
+                $this->page_type = 'paylogin';
                 break;
         }
         return '
